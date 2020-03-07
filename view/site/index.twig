@@ -1,0 +1,39 @@
+{% extends 'site/template.twig' %}
+
+{% block content %}
+    <table class="table">
+        <thead class="">
+        <tr>
+            <th scope="col" style="width: 20%">{{ nameCol|raw }}</th>
+            <th scope="col" style="width: 20%">{{ emailCol|raw }}</th>
+            <th scope="col" style="width: 50%">Task</th>
+            <th scope="col" style="width: 10%">{{ statusCol|raw }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in list %}
+            <tr>
+                <td>{{ data.name }}</td>
+                <td>{{ data.email }}</td>
+                <td>
+                    {{ data.task|raw }}
+                    {% if is_admin == 1 %}
+                    &nbsp;<a href="/edit/{{ data.id }}"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                    {% endif %}
+
+                    {% if data.getEdited() == 1 %}
+                    <br><small class="text-info">[отредактировано администратором]</small>
+                    {% endif %}
+                </td>
+                {% set status = 'в работе' %}
+                {% if data.status == 1 %}
+                    {% set status = 'выполнено' %}
+                {% endif %}
+                <td>{{ status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% include 'site/paginator.twig' %}
+{% endblock %}

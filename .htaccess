@@ -1,0 +1,18 @@
+
+AddDefaultCharset UTF-8
+AddType 'text/html; charset=UTF-8' html
+
+DirectoryIndex index.php index.html
+Options -Indexes
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -s
+RewriteRule (.*)$ - [NC,L]
+RewriteRule (.*)(\?[\w]+)?$ //index.php$2 [L]
+
+
+php_value upload_max_filesize 25m
+php_value post_max_size 25m

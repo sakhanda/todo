@@ -1,0 +1,17 @@
+{
+  "require": {
+    "doctrine/orm": "*",
+    "twig/twig": "^3.0",
+    "php": ">=7.2",
+    "ext-pdo_sqlite": "*",
+    "ext-pdo_mysql": "*",
+    "ext-dom": "*",
+    "vlucas/phpdotenv": "^4.1",
+    "doctrine/dbal": "^2.10"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
+}

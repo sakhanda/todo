@@ -1,0 +1,28 @@
+{% extends 'site/template.twig' %}
+
+{% block content %}
+<form method="post">
+    <label class="w-100"><b>Имя:</b><br>
+        <input class="w-100" type="text" name="name" value="{{ post.name }}">
+    </label><br>
+
+    <label class="w-100"><b>Email:</b><br>
+        <input class="w-100" type="text" name="email" value="{{ post.email }}">
+    </label><br>
+
+    <label class="w-100"><b>Задача:</b><br>
+    <textarea name="task" class="w-100" rows="7">{{ post.task }}</textarea>
+    </label><br>
+
+    {% if is_admin == 1 and update %}
+    <label>Выполнено:
+        &nbsp; <input name="status" value="1" type="checkbox"{% if post.status == 1 %} checked{% endif %}>
+    </label>
+    {% endif %}
+
+    <button type="submit" name="submit" class="btn btn-primary w-100">Добавить</button>
+    <div class="text-center">
+        или  <a href="/">выйти</a> без сохранения
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow: /vendor/
+Disallow: /app/
+Disallow: /src/

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% block title %}
+        <title>TODO list</title>
+    {% endblock %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block description %}
+        <meta name="description" content="">
+    {% endblock %}
+
+    <link href="/view/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/view/assets/css/font-awesome.css" rel="stylesheet">
+    <link href="/view/assets/css/app.css" rel="stylesheet">
+    {#<link rel="shortcut icon" href="/view/assets/img/favicon.png">#}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">TODO list</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/add">Добавить задачу</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/input">Админ доступ</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{% if errors %}
+    <div class="container text-center console">
+        <div class="alert-danger pt-2 pb-2">
+            {% for error in errors %}
+                {{ error }} <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+{% if successes %}
+    <div class="container text-center console">
+        <div class="alert-success pt-2 pb-2">
+            {% for success in successes %}
+                {{ success }} <br>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+<div class="m-3"></div>
+
+<div class="container">
+    {% if is_admin == 1 %}
+    <div class="text-right mb-4">
+        <a href="/output" class="btn btn-warning">Выйти</a>
+    </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Optional JavaScript -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="/view/assets/js/app.js"></script>
+{% block script %}{% endblock %}
+</body>
+</html>

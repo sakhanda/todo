@@ -1,0 +1,25 @@
+{% if paginator.allPage > 1 %}
+    <div class="container">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                {% if paginator.page > 1 %}
+                    {% set prev = paginator.page - 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ paginator.link }}/{{ prev }}">Назад</a></li>
+                {% endif %}
+                {% set breakLoop = false %}
+                {% for i in 0..paginator.length %}
+                    {% if breakLoop == false %}
+                        {% set num = i + paginator.startPage %}
+                        {% set active = '' %} {% if num == paginator.page %}{% set active = ' active' %}{% endif %}
+                        <li class="page-item{{ active }}"><a class="page-link" href="{{ paginator.link }}/{{ num }}">{{ num }}</a></li>
+                        {% if (i + paginator.startPage) >= paginator.allPage %}{% set breakLoop = true %}{% endif %}
+                    {% endif %}
+                {% endfor %}
+                {% if paginator.page < paginator.allPage %}
+                    {% set next = paginator.page + 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ paginator.link }}/{{ next }}">Вперед</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}
