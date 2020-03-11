@@ -57,6 +57,7 @@ class AddController extends SiteController
 
         $em->persist($task);
         $em->flush();
+        $_SESSION['successes'] = ['Задача успешно добавлена!'];
 
         header('location: /');
         die();

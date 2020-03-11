@@ -2,6 +2,8 @@
 ini_set('display_errors', true);
 ini_set('error_reporting', E_ERROR);
 
+session_start();
+
 /** @var string $path  */
 use App\bases\App;
 
